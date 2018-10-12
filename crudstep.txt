@@ -1,0 +1,16 @@
+composer create-project symfony/framework-standard-edition symfonyCrud2 "3.4.*"
+
+Create ORM
+php bin/console doctrine:mapping:import --force AppBundle xml
+
+Create Entity
+php bin/console doctrine:generate:entities "AppBundle\Entity" --path=src
+
+php bin/console doctrine:schema:update --dump-sql
+
+php bin/console doctrine:schema:update --force
+
+php bin/console doctrine:cache:clear-metadata
+
+php bin/console generate:doctrine:crud --entity=AppBundle:Framework
+
